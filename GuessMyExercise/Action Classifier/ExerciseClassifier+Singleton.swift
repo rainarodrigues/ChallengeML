@@ -2,9 +2,12 @@
 See LICENSE folder for this sample’s licensing information.
 
 Abstract:
-Creates a common instance of the Exercise Classifier.
- The app only uses one instance anyway and using a static property initializes
- the model at launch instead of when the the main view loads.
+ Cria uma instância comum do classificador de exercícios.
+ 
+ Para s
+ 
+ O aplicativo usa apenas uma instância de qualquer maneira e usando uma propriedade estática inicializa
+  o modelo no lançamento, em vez de quando a exibição principal é carregada.
 */
 
 import CoreML

@@ -1,30 +1,30 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+Basicamente esse arquivo ele vai trabalhar com rotulos da minha ação para prever o que ele tá
+ entendendo de acordo com que tá sendo passado pela camera!
+ Se o app está començando
+ se tem uma pessoa
+ Se quanto confiante é aquela pose que está sendo passada
 
-Abstract:
-Bundles an action label with a confidence value.
- The extension defines and generates placeholder predictions with labels that
- represent when the camera frame is devoid of people or when the model's
- confidence isn't high enough.
 */
 
 /// Bundles an action label with a confidence value.
 /// - Tag: ActionPrediction
 struct ActionPrediction {
-    /// The name of the action the Exercise Classifier predicted.
+    /// O nome da ação prevista pelo classificador de exercícios.
     let label: String
 
-    /// The Exercise Classifier's confidence in its prediction.
+    /// A confiança do classificador de exercícios em sua previsão.
     let confidence: Double!
 
     /// A string that represents the confidence as percentage if applicable;
     /// otherwise `nil`.
+    /// Tipo o valor do teste de confiabilidade daquela strig já que meu cod trabalha com a taxa de pocentagem daquelas possiçoes
     var confidenceString: String? {
         guard let confidence = confidence else {
             return nil
         }
 
-        // Convert the confidence to a percentage based string.
+        // Converta a confiança em uma string baseada em porcentagem.
         let percent = confidence * 100
         let formatString = percent >= 99.5 ? "%2.0f %%" : "%2.1f %%"
         return String(format: formatString, percent)
@@ -37,26 +37,27 @@ struct ActionPrediction {
 }
 
 extension ActionPrediction {
-    /// Defines placeholder prediction labels beyond the scope of the
+    /// Define rótulos de previsão de espaço reservado além do escopo do
+
     /// action classifier model.
     private enum AppLabel: String {
-        case starting = "Starting Up"
-        case noPerson = "No Person"
-        case lowConfidence = "Low Confidence"
+        case starting = "Starting Up" // começão
+        case noPerson = "No Person" // - nenhuma pessoa
+        case lowConfidence = "Low Confidence" //- baixa confiança
     }
 
-    /// A prediction that represents a time window that doesn't contain
-    /// enough human body pose observations.
+    /// Uma previsão que representa uma janela de tempo que não contém
+    /// observações de pose de corpo humano suficientes.
     static let startingPrediction = ActionPrediction(.starting)
 
-    /// A prediction that represents a time window that doesn't contain
-    /// enough human body pose observations.
+    /// Uma previsão que representa uma janela de tempo que não contém
+    /// observações de pose de corpo humano suficientes.
     /// - Tag: noPersonPrediction
     static let noPersonPrediction = ActionPrediction(.noPerson)
 
-    /// A prediction that takes the place of real prediction from the
-    /// action classifier model that has a low confidence.
-    /// - Tag: lowConfidencePrediction
+    /// Uma previsão que toma o lugar da previsão real do
+    /// Modelo de classificador de ação que tem uma confiança baixa.
+    /// - Tag: baixaConfiançaPredição
     static let lowConfidencePrediction = ActionPrediction(.lowConfidence)
 
     /// Creates a prediction with an app-defined label.

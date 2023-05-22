@@ -1,8 +1,5 @@
 /*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-Adds a runtime check to see if the app's knowledge matches the model's labels.
+Adiciona uma verificação de tempo de execução para ver se o conhecimento do aplicativo corresponde aos rótulos do modelo.
 */
 
 extension ExerciseClassifier {
